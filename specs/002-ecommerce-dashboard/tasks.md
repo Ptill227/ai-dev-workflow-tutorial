@@ -42,8 +42,8 @@ data/
 
 **⚠️ CRITICAL**: No user story work can begin until this phase is complete.
 
-- [ ] T004 Implement `load_data() -> pd.DataFrame` in `app.py`: use `@st.cache_data`, read `DATA_FILE` with `pd.read_csv(..., parse_dates=["date"])`, return the DataFrame
-- [ ] T005 Add startup error handling in `app.py` main flow: if `DATA_FILE` does not exist, call `st.error("Data file not found: data/sales-data.csv")` then `st.stop()`; otherwise call `df = load_data()`
+- [x] T004 Implement `load_data() -> pd.DataFrame` in `app.py`: use `@st.cache_data`, read `DATA_FILE` with `pd.read_csv(..., parse_dates=["date"])`, return the DataFrame
+- [x] T005 Add startup error handling in `app.py` main flow: if `DATA_FILE` does not exist, call `st.error("Data file not found: data/sales-data.csv")` then `st.stop()`; otherwise call `df = load_data()`
 
 **Checkpoint**: `streamlit run app.py` loads the CSV, prints `len(df)` to terminal (should be ~1,000), and stops cleanly with a user-friendly error if the file is missing
 
