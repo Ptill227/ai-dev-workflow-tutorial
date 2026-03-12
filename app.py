@@ -59,6 +59,28 @@ def make_category_chart(df: pd.DataFrame):
     return fig
 
 
+def make_region_chart(df: pd.DataFrame):
+    df_reg = (
+        df.groupby("region")["total_amount"]
+        .sum()
+        .reset_index()
+        .sort_values("total_amount", ascending=False)
+    )
+    fig = px.bar(
+        df_reg,
+        x="region",
+        y="total_amount",
+        title="Sales by Region",
+        labels={"region": "Region", "total_amount": "Sales ($)"},
+        height=CHART_HEIGHT,
+    )
+    fig.update_traces(
+        hovertemplate="<b>%{x}</b><br>Sales: $%{y:,.0f}<extra></extra>"
+    )
+    fig.update_yaxes(tickformat=CURRENCY_FORMAT)
+    return fig
+
+
 def make_trend_chart(df: pd.DataFrame):
     df_trend = (
         df.assign(month=df["date"].dt.to_period("M"))
@@ -99,3 +121,4 @@ st.divider()
 
 col_cat, col_reg = st.columns(2)
 col_cat.plotly_chart(make_category_chart(df), use_container_width=True)
+col_reg.plotly_chart(make_region_chart(df), use_container_width=True)

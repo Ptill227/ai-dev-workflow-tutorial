@@ -102,8 +102,8 @@ data/
 
 ### Implementation
 
-- [ ] T012 [P] [US4] Implement `make_region_chart(df: pd.DataFrame)` in `app.py`: group by region using `df.groupby("region")["total_amount"].sum().reset_index().sort_values("total_amount", ascending=False)`, call `px.bar(df_reg, x="region", y="total_amount", title="Sales by Region", labels={"region": "Region", "total_amount": "Sales ($)"})`, apply `fig.update_traces(hovertemplate="<b>%{x}</b><br>Sales: $%{y:,.0f}<extra></extra>")` and `fig.update_yaxes(tickformat=CURRENCY_FORMAT)`, return the figure
-- [ ] T013 [US4] Complete two-column layout in `app.py`: render `col_reg.plotly_chart(make_region_chart(df), use_container_width=True)` in the right column created in T011
+- [x] T012 [P] [US4] Implement `make_region_chart(df: pd.DataFrame)` in `app.py`: group by region using `df.groupby("region")["total_amount"].sum().reset_index().sort_values("total_amount", ascending=False)`, call `px.bar(df_reg, x="region", y="total_amount", title="Sales by Region", labels={"region": "Region", "total_amount": "Sales ($)"})`, apply `fig.update_traces(hovertemplate="<b>%{x}</b><br>Sales: $%{y:,.0f}<extra></extra>")` and `fig.update_yaxes(tickformat=CURRENCY_FORMAT)`, return the figure
+- [x] T013 [US4] Complete two-column layout in `app.py`: render `col_reg.plotly_chart(make_region_chart(df), use_container_width=True)` in the right column created in T011
 
 **Checkpoint**: All 5 visualizations present — 2 KPI cards + trend chart + category chart (left) + region chart (right). All charts interactive with correct tooltips and formatting.
 
