@@ -27,6 +27,17 @@ def load_data() -> pd.DataFrame:
 
 
 # ---------------------------------------------------------------------------
+# Chart/metric functions
+# ---------------------------------------------------------------------------
+def show_kpis(df: pd.DataFrame) -> None:
+    total_sales = df["total_amount"].sum()
+    total_orders = len(df)
+    col1, col2 = st.columns(2)
+    col1.metric("Total Sales", f"${total_sales:,.0f}")
+    col2.metric("Total Orders", f"{total_orders:,}")
+
+
+# ---------------------------------------------------------------------------
 # Main
 # ---------------------------------------------------------------------------
 if not DATA_FILE.exists():
@@ -34,3 +45,7 @@ if not DATA_FILE.exists():
     st.stop()
 
 df = load_data()
+
+st.title(DASHBOARD_TITLE)
+show_kpis(df)
+st.divider()

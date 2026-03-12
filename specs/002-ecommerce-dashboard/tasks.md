@@ -57,8 +57,8 @@ data/
 
 ### Implementation
 
-- [ ] T006 [US1] Implement `show_kpis(df: pd.DataFrame)` in `app.py`: compute `total_sales = df["total_amount"].sum()` and `total_orders = len(df)`; render using `col1, col2 = st.columns(2)` with `col1.metric("Total Sales", f"${total_sales:,.0f}")` and `col2.metric("Total Orders", f"{total_orders:,}")`
-- [ ] T007 [US1] Add KPI section to `app.py` main layout: render `st.title(DASHBOARD_TITLE)`, then call `show_kpis(df)`, followed by `st.divider()`
+- [x] T006 [US1] Implement `show_kpis(df: pd.DataFrame)` in `app.py`: compute `total_sales = df["total_amount"].sum()` and `total_orders = len(df)`; render using `col1, col2 = st.columns(2)` with `col1.metric("Total Sales", f"${total_sales:,.0f}")` and `col2.metric("Total Orders", f"{total_orders:,}")`
+- [x] T007 [US1] Add KPI section to `app.py` main layout: render `st.title(DASHBOARD_TITLE)`, then call `show_kpis(df)`, followed by `st.divider()`
 
 **Checkpoint**: Dashboard shows the title and two KPI metric cards with correct values. This is the MVP — deployable independently.
 
