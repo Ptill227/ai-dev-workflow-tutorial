@@ -37,6 +37,28 @@ def show_kpis(df: pd.DataFrame) -> None:
     col2.metric("Total Orders", f"{total_orders:,}")
 
 
+def make_trend_chart(df: pd.DataFrame):
+    df_trend = (
+        df.assign(month=df["date"].dt.to_period("M"))
+        .groupby("month")["total_amount"]
+        .sum()
+        .reset_index()
+    )
+    df_trend["month"] = df_trend["month"].dt.to_timestamp()
+    fig = px.line(
+        df_trend,
+        x="month",
+        y="total_amount",
+        title="Sales Trend Over Time",
+        labels={"month": "Month", "total_amount": "Sales ($)"},
+        markers=True,
+        height=CHART_HEIGHT,
+    )
+    fig.update_xaxes(tickformat="%b %Y")
+    fig.update_yaxes(tickformat=CURRENCY_FORMAT)
+    return fig
+
+
 # ---------------------------------------------------------------------------
 # Main
 # ---------------------------------------------------------------------------
@@ -48,4 +70,7 @@ df = load_data()
 
 st.title(DASHBOARD_TITLE)
 show_kpis(df)
+st.divider()
+
+st.plotly_chart(make_trend_chart(df), use_container_width=True)
 st.divider()

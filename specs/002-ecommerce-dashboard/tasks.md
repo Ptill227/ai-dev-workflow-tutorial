@@ -72,8 +72,8 @@ data/
 
 ### Implementation
 
-- [ ] T008 [US2] Implement `make_trend_chart(df: pd.DataFrame)` in `app.py`: group by month using `df.assign(month=df["date"].dt.to_period("M")).groupby("month")["total_amount"].sum().reset_index()`, convert Period to timestamp with `.dt.to_timestamp()`, call `px.line(df_trend, x="month", y="total_amount", title="Sales Trend Over Time", labels={"month": "Month", "total_amount": "Sales ($)"}, markers=True)`, apply `fig.update_xaxes(tickformat="%b %Y")` and `fig.update_yaxes(tickformat=CURRENCY_FORMAT)`, return the figure
-- [ ] T009 [US2] Add trend section to `app.py` main layout: call `st.plotly_chart(make_trend_chart(df), use_container_width=True)` followed by `st.divider()`
+- [x] T008 [US2] Implement `make_trend_chart(df: pd.DataFrame)` in `app.py`: group by month using `df.assign(month=df["date"].dt.to_period("M")).groupby("month")["total_amount"].sum().reset_index()`, convert Period to timestamp with `.dt.to_timestamp()`, call `px.line(df_trend, x="month", y="total_amount", title="Sales Trend Over Time", labels={"month": "Month", "total_amount": "Sales ($)"}, markers=True)`, apply `fig.update_xaxes(tickformat="%b %Y")` and `fig.update_yaxes(tickformat=CURRENCY_FORMAT)`, return the figure
+- [x] T009 [US2] Add trend section to `app.py` main layout: call `st.plotly_chart(make_trend_chart(df), use_container_width=True)` followed by `st.divider()`
 
 **Checkpoint**: Dashboard shows KPI cards (US1) + trend chart (US2). Hover over any point to confirm tooltip shows month and exact sales value.
 
