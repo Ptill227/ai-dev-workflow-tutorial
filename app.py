@@ -37,6 +37,28 @@ def show_kpis(df: pd.DataFrame) -> None:
     col2.metric("Total Orders", f"{total_orders:,}")
 
 
+def make_category_chart(df: pd.DataFrame):
+    df_cat = (
+        df.groupby("category")["total_amount"]
+        .sum()
+        .reset_index()
+        .sort_values("total_amount", ascending=False)
+    )
+    fig = px.bar(
+        df_cat,
+        x="category",
+        y="total_amount",
+        title="Sales by Category",
+        labels={"category": "Category", "total_amount": "Sales ($)"},
+        height=CHART_HEIGHT,
+    )
+    fig.update_traces(
+        hovertemplate="<b>%{x}</b><br>Sales: $%{y:,.0f}<extra></extra>"
+    )
+    fig.update_yaxes(tickformat=CURRENCY_FORMAT)
+    return fig
+
+
 def make_trend_chart(df: pd.DataFrame):
     df_trend = (
         df.assign(month=df["date"].dt.to_period("M"))
@@ -74,3 +96,6 @@ st.divider()
 
 st.plotly_chart(make_trend_chart(df), use_container_width=True)
 st.divider()
+
+col_cat, col_reg = st.columns(2)
+col_cat.plotly_chart(make_category_chart(df), use_container_width=True)

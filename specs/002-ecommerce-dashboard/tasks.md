@@ -87,8 +87,8 @@ data/
 
 ### Implementation
 
-- [ ] T010 [P] [US3] Implement `make_category_chart(df: pd.DataFrame)` in `app.py`: group by category using `df.groupby("category")["total_amount"].sum().reset_index().sort_values("total_amount", ascending=False)`, call `px.bar(df_cat, x="category", y="total_amount", title="Sales by Category", labels={"category": "Category", "total_amount": "Sales ($)"})`, apply `fig.update_traces(hovertemplate="<b>%{x}</b><br>Sales: $%{y:,.0f}<extra></extra>")` and `fig.update_yaxes(tickformat=CURRENCY_FORMAT)`, return the figure
-- [ ] T011 [US3] Reserve left column slot in `app.py` two-column chart layout: create `col_cat, col_reg = st.columns(2)` and render `col_cat.plotly_chart(make_category_chart(df), use_container_width=True)` (leave `col_reg` placeholder for US4)
+- [x] T010 [P] [US3] Implement `make_category_chart(df: pd.DataFrame)` in `app.py`: group by category using `df.groupby("category")["total_amount"].sum().reset_index().sort_values("total_amount", ascending=False)`, call `px.bar(df_cat, x="category", y="total_amount", title="Sales by Category", labels={"category": "Category", "total_amount": "Sales ($)"})`, apply `fig.update_traces(hovertemplate="<b>%{x}</b><br>Sales: $%{y:,.0f}<extra></extra>")` and `fig.update_yaxes(tickformat=CURRENCY_FORMAT)`, return the figure
+- [x] T011 [US3] Reserve left column slot in `app.py` two-column chart layout: create `col_cat, col_reg = st.columns(2)` and render `col_cat.plotly_chart(make_category_chart(df), use_container_width=True)` (leave `col_reg` placeholder for US4)
 
 **Checkpoint**: Category bar chart visible in left column. Bars sorted correctly with 5 categories and currency-formatted tooltips.
 
